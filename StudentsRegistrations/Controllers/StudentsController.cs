@@ -5,6 +5,7 @@ using StudentsRegistrations.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace StudentsRegistrations.Controllers
@@ -47,7 +48,19 @@ namespace StudentsRegistrations.Controllers
             //return CreatedAtRoute("Students", new { id = newStudent.id }, newStudent);
             return CreatedAtAction(nameof(AddStudent), new { newStudent.id }, newStudent);
         }
-        //[HttpDelete("{id}")]
+
+        public IActionResult ExportToCSV()
+        {
+            var builder = new StringBuilder();
+            builder.AppendLine("studentId,lastName,firstName,nation");
+            foreach (var student in _studentsServices.GetUnsubmittedStudents())
+            {
+                builder.AppendLine($"{student.studentId},{student.lastName},{student.firstName},{student.nation}");
+            }
+            return File(Encoding.UTF8.GetBytes(builder.ToString()), "text/csv", "unsubmittedStudents.csv");
+
+        }                       
+        //[HttpDelete("{id}")]   =
         //public IActionResult DeleteStudent(string studentId)
         //{
         //    _studentsServices.DeleteStudent(studentId);

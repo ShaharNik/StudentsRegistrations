@@ -12,20 +12,17 @@ namespace StudentsRegistrations.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
         public IStudentServices StudentService;
         public IEnumerable<Student> Students { get; private set; }
 
-        public IndexModel(ILogger<IndexModel> logger, IStudentServices StudentServices)
+        public IndexModel(IStudentServices StudentServices)
         {
-            _logger = logger;
-            StudentService = StudentServices;
+            StudentService = StudentServices;// Should get it from Server not DB !
         }
 
-        public void OnGet()
+        public void OnGet() // Should get it from Server not DB !
         {
-            Students = StudentService.GetUnsubmittedStudents();
-            //Students = StudentService.GetStudents();
+            Students = StudentService.GetUnsubmittedStudents();// Should get it from Server not DB !
         }
 
         public IActionResult OnPostRegisterStudents()
