@@ -1,0 +1,162 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Register Student";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./test.css">
+    <title>Assigment</title>
+</head>
+
+<body>
+
+</div>
+    <div class="container">
+        <form class="form" id="form" method="POST">
+            <div class="sub-container">
+                <section>
+                    <table border="1" bordercolor="black" cellspacing="0">
+                        <tr>
+                            <th colspan="2">פרטים אישיים</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="fa fa-id-card-o icon" aria-hidden="true"></i>
+                                <label for="id">תעודת זהות</label>
+                            </td>
+                            <td>
+                                <input type="text" class="id" id="id" name="id" placeholder="מספר תעודת זהות" required>
+                            </td>
+                        </tr>
+@*                        <tr>
+                            <td>
+                                <i class="fa fa-calendar icon" aria-hidden="true"></i>
+                                <label for="birthday">תאריך לידה</label>
+                            </td>
+                            <td><input type="date" class="birthday" id="birthday" name="birthday" required></td>
+                        </tr>*@
+                        <tr>
+                            <td>
+                                <i class="fa fa-user icon"></i>
+                                <label for="lastName">שם משפחה</label>
+                            </td>
+                            <td><input type="text" class="lastName" id="lastName" name="lastName" placeholder="שם משפחה" required></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="fa fa-user icon"></i>
+                                <label for="lastName">שם פרטי</label>
+                            </td>
+                            <td><input type="text" class="firstName" id="firstName" name="firstName" placeholder="שם פרטי" required></td>
+                        </tr>
+@*                        <tr>
+                            <td>
+                                <i class="fa fa-male icon" aria-hidden="true"></i>
+                                <input type="radio" class="male" id="male" name="gender">
+                            </td>
+                            <td>
+                                <i class="fa fa-female icon" aria-hidden="true"></i>
+                                <input type="radio" class="female" id="female" name="gender">
+                            </td>
+                        </tr>*@
+                    </table>
+                </section>
+
+@*                <section>
+                    <table border="1" bordercolor="black" cellspacing="0">
+                        <tr>
+                            <th colspan="2">פרטי התקשרות</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="fa fa-home icon" aria-hidden="true"></i>
+                                <label for="homeNumber">מס' טלפון ביתי</label>
+                            </td>
+                            <td>
+                                <input type="text" class="homeNumber" id="homeNumber" name="homeNumber" placeholder="מס' טלפון ביתי">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class=" fa fa-mobile icon" aria-hidden="true"></i>
+                                <label for="mobile">טלפון נייד</label>
+                            </td>
+                            <td>
+                                <input type="text" class="mobile" id="mobile" name="mobile" placeholder="טלפון נייד" required> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="fa fa-envelope icon" aria-hidden="true"></i>
+                                <input type="email" class="email" id="email" name="email" placeholder="כתובת אימייל" required>
+                            </td>
+                        </tr>
+                    </table>
+                </section>*@
+
+                <section>
+                <table border="1" bordercolor="black" cellspacing="0">
+                    <tr>
+                        <th colspan="2">פרטי לאום</th>
+                    </tr>
+@*                    <tr>
+                        <td>
+                            <i class="fa fa-globe icon" aria-hidden="true"></i>
+                            <label for="country">מדינה</label>
+                        </td>
+                        <td>
+                            <input type="text" class="country" id="country" name="country" placeholder="מדינה" required>
+                        </td>
+                    </tr>*@
+                    <tr>
+                        <td>
+                            <i class="fa fa-flag icon" aria-hidden="true"></i>
+                            <label for="nation">לאום</label>
+                        </td>
+                        <td>
+                            <input type="text" class="nation" id="nation" name="nation" placeholder="לאום">
+                        </td>
+                    </tr>
+@*                    <tr>
+                        <td>
+                            <i class="fa fa-calendar icon" aria-hidden="true"></i>
+                            <label for="immigration">תאריך עלייה</label>
+                        </td>
+                        <td><input type="date" class="immigration" id="immigration" name="immigration"></td>
+                    </tr>*@
+             
+                </table>
+                </section>
+
+                <section>
+                    <table border="1" bordercolor="black" cellspacing="0">
+                        <tr>
+                            <th colspan="2">כפתורים</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" class="submit" id="submit" value="שליחת טופס">
+                            </td>
+                            <td>
+                                @*<button type="button" id="report">הפקת דו''ח</button>*@
+                            </td>
+                        </tr>
+                    </table>
+                </section>   
+            </div>
+            <div class="error" id="error"></div>  
+        </form>
+    </div>
+
+<script src="./script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="card-columns">
+    @foreach (var student in Model.Students)
+    {
+        <div class="card">
+            @*<div class="card-body">*@
+                ID: @student.studentId
+                First name: @student.firstName 
+                Last name: @student.lastName
+                Submitted?: @student.isSubmitted
+            @*</div>*@
+        </div>
+    }
+</div>
+<form method="post">
+    <button type="submit" asp-page-handler="RegisterStudents">RegisterStudents</button>
+</form>
+
+@*<a asp-page="Index" asp-page-handler="RegisterStudents">
+
+  Click Me
+
+</a>*@
+@*<button type="submit" asp-page-handler="RegisterStudents" class="btn btn-outline-info" 
+id="btnGenerateWebName">Generate Business Web Name</button>*@
+
