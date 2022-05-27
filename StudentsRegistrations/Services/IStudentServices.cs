@@ -8,16 +8,14 @@ namespace StudentsRegistrations.Services
 {
     public interface IStudentServices
     {
-        List<Student> GetStudents();
-        List<Student> GetUnsubmittedStudents();
-        Student AddStudent(Student newStudent);
-        Student GetStudent(string studentId);
+        Task<IEnumerable<Student>> GetStudents();
+        Task<IEnumerable<Student>> GetUnsubmittedStudents();
+        Task<Student> AddStudent(Student newStudent);
+        Task<Student> GetStudent(string studentId);
 
-        long countStudentsFromCountry(string country);
-        //List<Student> GetUnsubmittedStudents();
-        void DeleteStudent(string studentId);
-        void SubmitStudents();
+        Task<long> countStudentsByNation(string country);
+        Task DeleteStudent(string studentId);
 
-        Student UpdateStudent(Student Student);  
+        Task<Student> UpdateStudent(Student Student);
     }
 }

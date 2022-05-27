@@ -9,7 +9,7 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 <div class="card-columns">
-    @if (Model.Students != null)
+    @if (Model.Students != null) // .Any()
     {
          @foreach (var student in Model.Students)
         {
@@ -29,10 +29,10 @@
 <form method="post">
     <button type="submit" asp-page-handler="RegisterStudents">RegisterStudents</button>
 </form>
-@*<div class="text-center"> // not reaching to the method in server (StudentsController)
+<div class="text-center"> // not reaching to the method in server (StudentsController)
     <form method="post" asp-controller="Students" asp-action="ExportToCSV">
         <input type="submit" value="Export To CSV" />
     </form>
-</div>*@
+</div>
 
 

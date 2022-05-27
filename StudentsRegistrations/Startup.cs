@@ -56,6 +56,7 @@ namespace StudentsRegistrations
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                //endpoints.MapControllerRoute("Default", "{controller=Students}/{action}/{id?}");
             });
         }
     }

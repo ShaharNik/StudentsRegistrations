@@ -11,54 +11,54 @@ namespace StudentsRegistrations.Services
     public class StudentServices : IStudentServices
     {
         private readonly IMongoCollection<Student> _students;
+
         public StudentServices(IDbClient dbClient)
         {
             _students = dbClient.GetStudentsCollection();
         }
-
-        public Student AddStudent(Student newStudent)
+        public async Task<IEnumerable<Student>> GetStudents()
         {
-            _students.InsertOne(newStudent);
+            var allStudents = await _students.AsQueryable().ToListAsync();
+            return allStudents;
+        }
+
+        public async Task<Student> AddStudent(Student newStudent)
+        {
+            await _students.InsertOneAsync(newStudent);
             return newStudent;
         }
 
-        public long countStudentsFromCountry(string country)
+        public async Task<long> countStudentsByNation(string nation)
         {
-            return _students.Find(student => student.nation.Equals(country)).CountDocuments();
+            var nationFilter = Builders<Student>.Filter.Where(student => student.nation.Equals(nation));
+            long countResult = await _students.CountDocumentsAsync(nationFilter);
+            return countResult;
         }
 
-        public void DeleteStudent(string studentId)
+        public async Task DeleteStudent(string studentId)
         {
-            _students.DeleteOne(student => student.id == studentId);
+            await _students.DeleteOneAsync(student => student.id == studentId);
         }
 
-        public Student GetStudent(string studentId)
+        public async Task<Student> GetStudent(string studentId)
         {
-            return _students.Find(student => student.studentId == studentId).First();
-        }
-
-        public List<Student> GetStudents()
-        {
-            return _students.Find(student => true).ToList();
-        }
-
-        public List<Student> GetUnsubmittedStudents()
-        {
-            return _students.Find(student => student.isSubmitted == false).ToList();
-        }
-
-        public void SubmitStudents()
-        {
-            var updateDefinition = Builders<Student>.Update.Set(student => student.isSubmitted, true);
-            _students.UpdateMany(student => student.isSubmitted == false, updateDefinition); // submit all unsubmitted student
-        }
-
-        public Student UpdateStudent(Student student)
-        {
-            GetStudent(student.studentId);
-            _students.ReplaceOne(s => s.studentId == student.studentId, student);
+            var student = await _students.Find(student => student.studentId == studentId).FirstOrDefaultAsync();
             return student;
         }
+
+
+        public async Task<IEnumerable<Student>> GetUnsubmittedStudents()
+        {
+            var allUnsubmittedStudents = await _students.Find(student => student.isSubmitted == false).ToListAsync();
+            return allUnsubmittedStudents;
+        }
+
+        public async Task<Student> UpdateStudent(Student student)
+        {
+            await _students.ReplaceOneAsync(s => s.studentId == student.studentId, student);
+            return student;
+        }
+
     }
 }
 

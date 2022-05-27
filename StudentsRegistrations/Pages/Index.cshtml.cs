@@ -20,16 +20,16 @@ namespace StudentsRegistrations.Pages
             StudentService = StudentServices;// Should get it from Server not DB !
         }
 
-        public void OnGet() // Should get it from Server not DB !
+        public async Task OnGetAsync() // Should get it from Server not DB !
         {
-            Students = StudentService.GetUnsubmittedStudents();// Should get it from Server not DB !
+            Students = await StudentService.GetUnsubmittedStudents();// Should get it from Server not DB !
         }
 
-        public IActionResult OnPostRegisterStudents()
-        {
-            StudentService.SubmitStudents();
-            Students = StudentService.GetUnsubmittedStudents();
-            return Page();
-        }
+        //public IActionResult OnPostRegisterStudents()
+        //{
+        //    StudentService.SubmitStudents();
+        //    Students = StudentService.GetUnsubmittedStudents();
+        //    return Page();
+        //}
     }
 }
